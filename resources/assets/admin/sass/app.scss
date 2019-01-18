@@ -1,0 +1,11 @@
+@import '~vue-awesome-notifications/dist/styles/style.scss';
+
+.v-select.searchable .dropdown-toggle {
+  height: 34px;
+}
+.v-select .dropdown-toggle .clear {
+  bottom: 7px !important;
+}
+.v-select .open-indicator {
+  bottom: 5px !important;
+}
