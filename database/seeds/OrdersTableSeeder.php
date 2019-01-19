@@ -31,12 +31,7 @@ class OrdersTableSeeder extends Seeder
             'ACCEPTED'
         ];
 
-        for ($i = 0; $i < 100; $i++) {
-            $buff[] = [
-                'status' => $statuses[rand(0, 8)],
-                'created_at' => Carbon::create(date('Y'), date('n'), rand(1, 28)),
-                'total_price' => rand(50, 1000)
-            ];
+        for ($i = 0; $i < 300; $i++) {
             $buff[] = [
                 'status' => $statuses[rand(0, 8)],
                 'created_at' => Carbon::create(date('Y'), rand(1, 12), rand(1, 28)),

@@ -77,12 +77,6 @@
                 </router-link>
             </li>
             <li>
-                <router-link :to="{ name: 'auth.change_password' }">
-                    <i class="fa fa-key"></i>
-                    <span class="title">Сменить пароль</span>
-                </router-link>
-            </li>
-            <li>
                 <a href="{{ url('/admin/logout') }}">
                     <i class="fa fa-arrow-left"></i>
                     <span class="title">Выйти</span>

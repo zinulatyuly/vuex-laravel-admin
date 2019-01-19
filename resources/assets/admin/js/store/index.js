@@ -6,6 +6,8 @@ import UsersSingle from './modules/Users/single';
 
 import SettingsIndex from './modules/Settings';
 import SettingsSingle from './modules/Settings/single';
+import MenusIndex from './modules/Menus';
+import MenusSingle from './modules/Menus/single';
 
 import Alert from './modules/alert';
 import ChangePassword from './modules/change_password';
@@ -22,6 +24,8 @@ export default new Vuex.Store({
     UsersSingle,
     SettingsIndex,
     SettingsSingle,
+    MenusIndex,
+    MenusSingle,
   },
   strict: debug,
 });
