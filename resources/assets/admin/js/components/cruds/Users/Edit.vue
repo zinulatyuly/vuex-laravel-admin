@@ -63,38 +63,6 @@
                     @input="updateRole"
                   />
                 </div>
-                <div class="form-group">
-                  <label for="partner">Партнер</label>
-                  <v-select
-                    :value="item.partner"
-                    :filterable="false"
-                    :options="partnersAll"
-                    name="partner"
-                    label="shortName"
-                    @input="updatePartner"
-                    @search="onSearchPartners"
-                  >
-                    <template slot="no-options">
-                      Введите код партнера...
-                    </template>
-                    <template
-                      slot="option"
-                      slot-scope="option"
-                    >
-                      <div>
-                        {{ option.shortName }}
-                      </div>
-                    </template>
-                    <template
-                      slot="selected-option"
-                      slot-scope="option"
-                    >
-                      <div class="selected">
-                        {{ option.shortName }}
-                      </div>
-                    </template>
-                  </v-select>
-                </div>
               </div>
 
               <div class="box-footer">
@@ -125,7 +93,7 @@ export default {
     };
   },
   computed: {
-    ...mapGetters('UsersSingle', ['item', 'loading', 'rolesAll', 'partnersAll']),
+    ...mapGetters('UsersSingle', ['item', 'loading', 'rolesAll']),
   },
   watch: {
     '$route.params.id': function () {
@@ -148,9 +116,7 @@ export default {
       'setEmail',
       'setPassword',
       'setRole',
-      'fetchRolesAll',
-      'setPartner',
-      'fetchPartnersAll',
+      'fetchRolesAll'
     ]),
     updateName(e) {
       this.setName(e.target.value);
@@ -163,15 +129,6 @@ export default {
     },
     updateRole(value) {
       this.setRole(value);
-    },
-    updatePartner(value) {
-      this.setPartner(value);
-    },
-    onSearchPartners(search, loading) {
-      loading(true);
-      this.fetchPartnersAll(search).then(() => {
-        loading(false);
-      });
     },
     submitForm() {
       this.updateData()

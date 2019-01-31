@@ -86,13 +86,10 @@ export default {
         const arr = this.treeData;
         arr.push({
           id: `new${++this.counter}`,
-          text: 'EKF',
+          text: 'Tree Element',
           url: '#',
-          code: `<div>
-    <img src="images/main_logo.png">
-</div>`,
           parentId: null,
-          order: null,
+          sort_order: null,
         });
         this.treeData = arr;
         return;
@@ -110,10 +107,10 @@ export default {
         if (!arr[arr.indexOf(item)].children) arr[arr.indexOf(item)].children = [];
         arr[arr.indexOf(item)].children.push({
           id: `new${++this.counter}`,
-          text: 'EKF',
+          text: 'Tree Element',
           url: '#',
           parentId: null,
-          order: null,
+          sort_order: null,
         });
       } else {
         arr.forEach((child) => {
@@ -189,14 +186,14 @@ export default {
     matchParents(array) {
       array.forEach((item, index) => {
         item.parentId = null;
-        item.order = index;
+        item.sort_order = index;
         if (item.children.length) this.recourseMatching(item);
       });
     },
     recourseMatching(item) {
       item.children.forEach((child, index) => {
         child.parentId = item.id;
-        child.order = index;
+        child.sort_order = index;
         if (child.children.length) this.recourseMatching(child);
       });
     },

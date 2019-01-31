@@ -48115,9 +48115,9 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Server\data\htdocs\vuex-laravel-admin\resources\js\app.js */"./resources/js/app.js");
-__webpack_require__(/*! C:\Server\data\htdocs\vuex-laravel-admin\resources\sass\app.scss */"./resources/sass/app.scss");
-module.exports = __webpack_require__(/*! C:\Server\data\htdocs\vuex-laravel-admin\resources\assets\admin\sass\app.scss */"./resources/assets/admin/sass/app.scss");
+__webpack_require__(/*! /home/dzinur/Code/vuex-laravel-admin/resources/js/app.js */"./resources/js/app.js");
+__webpack_require__(/*! /home/dzinur/Code/vuex-laravel-admin/resources/sass/app.scss */"./resources/sass/app.scss");
+module.exports = __webpack_require__(/*! /home/dzinur/Code/vuex-laravel-admin/resources/assets/admin/sass/app.scss */"./resources/assets/admin/sass/app.scss");
 
 
 /***/ })

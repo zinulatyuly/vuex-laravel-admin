@@ -71,7 +71,7 @@
                 <div class="form-group">
                   <label>Порядок</label>
                   <input
-                    :value="item.order"
+                    :value="item.sortOrder"
                     type="number"
                     class="form-control"
                     @input="updateOrder"

@@ -25,14 +25,6 @@
                   class="form-control"
                 >
               </div>
-              <div class="form-group">
-                <label>Код блока изображения</label>
-                <textarea
-                  v-model="item.code"
-                  rows="10"
-                  class="form-control"
-                >{{ item.code }}</textarea>
-              </div>
             </div>
             <div class="modal-footer">
               <button

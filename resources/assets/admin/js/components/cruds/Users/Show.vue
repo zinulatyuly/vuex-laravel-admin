@@ -50,57 +50,8 @@
                           </span>
                         </td>
                       </tr>
-                      <tr>
-                        <th>Партнер</th>
-                        <td>
-                          <span v-if="item.partner !== null">
-                            {{ item.partner.shortName }}
-                          </span>
-                        </td>
-                      </tr>
-                      <tr>
-                        <th>Код партнера</th>
-                        <td>
-                          <span v-if="item.partner !== null">
-                            {{ item.partner.code }}
-                          </span>
-                        </td>
-                      </tr>
-                      <tr>
-                        <th>
-                          <router-link
-                            :to="{ name: 'tokens.index', params: { id: $route.params.id } }"
-                            class="btn btn-default"
-                          >
-                            OAuth авторизация
-                          </router-link>
-                        </th>
-                        <td>&nbsp;</td>
-                      </tr>
                     </tbody>
                   </table>
-                  <div class="nav-tabs-custom">
-                    <ul class="nav nav-tabs">
-                      <li class="active">
-                        <a
-                          href="#tab_1"
-                          data-toggle="tab"
-                          aria-expanded="true"
-                        >Запросы к API</a>
-                      </li>
-                    </ul>
-                    <div class="tab-content">
-                      <div
-                        id="tab_1"
-                        class="tab-pane active"
-                      >
-                        <tracker-api-chart
-                          :data="item.api"
-                          :height="250"
-                        />
-                      </div>
-                    </div>
-                  </div>
                 </div>
               </div>
             </div>

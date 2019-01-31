@@ -3,7 +3,6 @@ function initialState() {
     all: [],
     relationships: {
       role: 'displayName',
-      partner: 'shortName',
     },
     query: {},
     loading: false,

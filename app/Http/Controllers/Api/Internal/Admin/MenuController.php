@@ -13,7 +13,7 @@ class MenuController extends Controller
 
     public function index()
     {
-        return MenuResource::collection(Menu::oldest('sort_order')->get());
+        return MenuResource::collection(Menu::all());
     }
 
     public function show($id)
@@ -27,7 +27,7 @@ class MenuController extends Controller
     {
         $menu = new Menu($request->all());
 
-        DB::transaction(function () use ($menu, $request) {
+        DB::transaction(function () use ($menu) {
             $menu->save();
         });
 

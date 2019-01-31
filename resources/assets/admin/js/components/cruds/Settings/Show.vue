@@ -50,7 +50,7 @@
                       </tr>
                       <tr>
                         <th>Порядок</th>
-                        <td>{{ item.order }}</td>
+                        <td>{{ item.sortOrder }}</td>
                       </tr>
                       <tr>
                         <th>Примечания</th>

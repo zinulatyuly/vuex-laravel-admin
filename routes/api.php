@@ -7,6 +7,9 @@ Route::namespace('Api')->group(function () {
         Route::namespace('Admin')->prefix('admin')->group(function () {
             Route::get('dashboard', 'DashboardController@index');
             Route::apiResource('menus', 'MenuController');
+            Route::apiResource('settings', 'SettingController');
+            Route::apiResource('users', 'UserController');
+            Route::apiResource('roles', 'RoleController');
             Route::post('media/upload', 'MediaController@upload');
             Route::prefix(config('media-manager.routes.prefix'))->group(function() {
                 Route::get('browser/index', 'MediaManagerController@ls');
@@ -21,6 +24,5 @@ Route::namespace('Api')->group(function () {
                 Route::post('browser/move', 'MediaManagerController@move');
             });
         });
-
     });
 });

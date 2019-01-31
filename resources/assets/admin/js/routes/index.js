@@ -20,10 +20,6 @@ import UsersCreate from '../components/cruds/Users/Create';
 import UsersShow from '../components/cruds/Users/Show';
 import UsersEdit from '../components/cruds/Users/Edit';
 
-/* SEO */
-import LayoutIndex from '../components/layouts/Index';
-import LayoutGroup from '../components/layouts/Group';
-
 Vue.use(VueRouter);
 
 const routes = [
@@ -46,6 +42,11 @@ const routes = [
   { path: '/users/create', component: UsersCreate, name: 'users.create' },
   { path: '/users/:id', component: UsersShow, name: 'users.show' },
   { path: '/users/:id/edit', component: UsersEdit, name: 'users.edit' },
+  
+  { path: '/settings', component: SettingsIndex, name: 'settings.index' },
+  { path: '/settings/create', component: SettingsCreate, name: 'settings.create' },
+  { path: '/settings/:id', component: SettingsShow, name: 'settings.show' },
+  { path: '/settings/:id/edit', component: SettingsEdit, name: 'settings.edit' },
 
   { path: '/menus', component: MenusIndex, name: 'menus.index' },
   { path: '/menus/create', component: MenusCreate, name: 'menus.create' },

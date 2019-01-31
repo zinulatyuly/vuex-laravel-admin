@@ -7,7 +7,7 @@ function initialState() {
       value: null,
       group: null,
       type: null,
-      order: null,
+      sortOrder: null,
       details: null,
     },
 
@@ -124,7 +124,7 @@ const mutations = {
     state.item.type = value;
   },
   setOrder(state, value) {
-    state.item.order = value;
+    state.item.sortOrder = value;
   },
   setGroup(state, value) {
     state.item.group = value;

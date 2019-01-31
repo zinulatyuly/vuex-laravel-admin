@@ -92,25 +92,6 @@ export default {
           { title: 'Электронная почта', field: 'email', sortable: true },
           { title: 'Роль', field: 'role', tdComp: DatatableSingle },
           {
-            title: 'Партнер',
-            field: 'partner',
-            tdComp: DatatableSingle,
-            sortable: true,
-          },
-          {
-            title: 'Код партнера',
-            field: 'partner',
-            tdComp: DatatablePartnerCode,
-            searchableField: 'partner.code',
-          },
-          {
-            title: 'Запросы к API',
-            field: 'api',
-            tdComp: DatatableTrackerApi,
-            sortable: true,
-            searchable: false,
-          },
-          {
             title: 'Действия',
             tdComp: DatatableActions,
             visible: true,

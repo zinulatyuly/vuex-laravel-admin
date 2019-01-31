@@ -99,7 +99,7 @@ export default {
           return column;
         });
       })(),
-      query: { sort: 'id', order: 'desc' },
+      query: { sort: 'id', sortOrder: 'desc' },
       xprops: {
         module: 'SettingsIndex',
         route: 'settings',

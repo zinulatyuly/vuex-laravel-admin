@@ -8,11 +8,8 @@ function initialState() {
       email: null,
       password: null,
       role: null,
-      partner: null,
-      api: [],
     },
     rolesAll: [],
-    partnersAll: [],
     loading: false,
   };
 }
@@ -21,7 +18,6 @@ const getters = {
   item: state => state.item,
   loading: state => state.loading,
   rolesAll: state => state.rolesAll,
-  partnersAll: state => state.partnersAll,
 };
 
 const actions = {
@@ -101,15 +97,6 @@ const actions = {
       commit('setRolesAll', response.data.data);
     });
   },
-  fetchPartnersAll: debounce(
-    ({ commit }, search) => new Promise((resolve, reject) => {
-      axios.get(`/api/internal/admin/partners?searchText=${search}`).then((response) => {
-        commit('setPartnersAll', response.data.data);
-        resolve();
-      });
-    }),
-    350,
-  ),
   setName({ commit }, value) {
     commit('setName', value);
   },
@@ -121,9 +108,6 @@ const actions = {
   },
   setRole({ commit }, value) {
     commit('setRole', value);
-  },
-  setPartner({ commit }, value) {
-    commit('setPartner', value);
   },
   resetState({ commit }) {
     commit('resetState');
@@ -148,12 +132,6 @@ const mutations = {
   },
   setRolesAll(state, value) {
     state.rolesAll = value;
-  },
-  setPartner(state, value) {
-    state.item.partner = value;
-  },
-  setPartnersAll(state, value) {
-    state.partnersAll = value;
   },
   setLoading(state, loading) {
     state.loading = loading;
