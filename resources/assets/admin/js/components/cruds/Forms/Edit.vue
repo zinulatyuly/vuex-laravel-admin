@@ -55,6 +55,7 @@
                 <div class="form-group">
                   <label>Тип</label>
                   <select
+                          :value="item.typeId"
                           @input="updateTypeId"
                           class="form-control"
                   >
@@ -109,9 +110,9 @@
       ...mapGetters('FormsSingle', ['item', 'loading', 'departments', 'selectedDepartment']),
       dep: {
         get() {
-          console.log(this.departments, this.item);
-          if (this.selectedDepartment.department) { return this.selectedDepartment }
-          else return this.departments.find(item => item.id === this.item.departmentId);
+          if (this.selectedDepartment.department) {
+            return this.selectedDepartment
+          } else return this.departments.find(department => department.id === this.item.departmentId)
         },
         set(value) {
           this.setDepartment(value);

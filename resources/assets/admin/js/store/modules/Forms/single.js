@@ -91,7 +91,7 @@ const actions = {
   fetchData({ commit, dispatch }, id) {
     axios.get(`/api/internal/admin/forms/${id}`).then(({data}) => {
       commit('setItem', data.data);
-      commit('setDepartment', { ... data.data.department, ... { departmentTypes: [data.data.departmentType]}})
+      //commit('setDepartment', { ... data.data.department, ... { departmentTypes: [data.data.departmentType]}})
     });
   },
   fetchDepartments({ commit, state }) {

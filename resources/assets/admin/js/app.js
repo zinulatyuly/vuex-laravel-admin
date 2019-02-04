@@ -13,7 +13,7 @@ import locale from './components/dtmodules/locale';
 import store from './store';
 import router from './routes';
 import 'eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.css';
-//import '../../vendor/talvbansal/media-manager/js/media-manager';
+import '../../vendor/talvbansal/media-manager/js/media-manager';
 
 import BackButton from './components/BackButton';
 import Alert from './components/Alert';
@@ -88,11 +88,6 @@ const app = new Vue({
       format: window.datetime_format_moment,
       sideBySide: true,
     },
-  },
-  created() {
-    $('#media-manager-modal').on('hide.bs.modal', () => {
-      mm.destroy();
-    });
   },
   router,
   store,

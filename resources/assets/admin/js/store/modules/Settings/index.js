@@ -15,7 +15,7 @@ const getters = {
 };
 
 const actions = {
-  fetchData({ commit, state }) {
+  fetchData({ commit, state, dispatch }) {
     commit('setLoading', true);
 
     axios
@@ -25,14 +25,18 @@ const actions = {
       })
       .catch((error) => {
         const message = error.response.data.message || error.message;
-        commit('setError', message);
-        console.log(message);
+        const errors = error.response.data.errors;
+        dispatch(
+          'Alert/setAlert',
+          { message, errors, color: 'danger' },
+          { root: true },
+        );
       })
       .finally(() => {
         commit('setLoading', false);
       });
   },
-  destroyData({ commit, state }, id) {
+  destroyData({ commit, state, dispatch }, id) {
     axios
       .delete(`/api/internal/admin/settings/${id}`)
       .then((response) => {
@@ -40,8 +44,12 @@ const actions = {
       })
       .catch((error) => {
         const message = error.response.data.message || error.message;
-        commit('setError', message);
-        console.log(message);
+        const errors = error.response.data.errors;
+        dispatch(
+          'Alert/setAlert',
+          { message, errors, color: 'danger' },
+          { root: true },
+        );
       });
   },
   setQuery({ commit }, value) {
