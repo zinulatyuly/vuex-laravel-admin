@@ -43,18 +43,11 @@
                       >Типы</th>
                     </thead>
                     <tbody>
-                      <tr>
-                        <th width="15%">Код Bitrix 24</th>
-                        <th width="40%">Тип</th>
-                        <th width="45%">E-mail</th>
-                      </tr>
                       <tr
                         v-for="(type, index) in item.departmentTypes"
                         :key="index"
                       >
-                        <td>{{ type.code }}</td>
                         <td>{{ type.type }}</td>
-                        <td>{{ type.email }}</td>
                       </tr>
                     </tbody>
                   </table>

@@ -54,6 +54,7 @@ class MenuController extends Controller
     public function destroy($id)
     {
         $menu = Menu::findOrFail($id);
+        $menu->items()->delete();
         $menu->delete();
 
         return response(null, 204);

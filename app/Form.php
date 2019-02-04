@@ -11,13 +11,23 @@ class Form extends Model
 
     protected $fillable = [
         'name',
-        'type',
-        'department'
+        'type_id',
+        'department_id'
     ];
 
-    public function formSlugs()
+    public function slugs()
     {
         return $this->hasMany('App\FormSlug', 'form_id');
+    }
+
+    public function departmentType()
+    {
+        return $this->belongsTo('App\FormDepartmentType', 'type_id');
+    }
+
+    public function department()
+    {
+        return $this->belongsTo('App\FormDepartment', 'department_id');
     }
 
     public function syncFormSlugs(array $formSlugs)
@@ -27,14 +37,14 @@ class Form extends Model
         $deletedFormSlugs = array_diff(array_pluck($oldFormSlugs, 'id'), array_pluck($formSlugs, 'id'));
 
         foreach ($deletedFormSlugs as $formSlug) {
-            $this->formSlugs()->where('id', $formSlug)->delete();
+            $this->slugs()->where('id', $formSlug)->delete();
         }
 
         foreach ($formSlugs as $formSlug) {
-            $oldFormSlug = $this->formSlugs()->find($formSlug['id']);
+            $oldFormSlug = $this->slugs()->find($formSlug['id']);
 
             if (is_null($oldFormSlug)) {
-                $this->formSlugs()->create($formSlug);
+                $this->slugs()->create($formSlug);
             } else {
                 $oldFormSlug->update($formSlug);
             }

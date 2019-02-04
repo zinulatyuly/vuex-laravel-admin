@@ -25,8 +25,8 @@ class FeedbackFormRequest extends FormRequest
     {
         return [
             'name' => 'string',
-            'type_id' => 'string',
-            'department_id' => 'string'
+            'type_id' => 'numeric',
+            'department_id' => 'numeric'
         ];
     }
 }

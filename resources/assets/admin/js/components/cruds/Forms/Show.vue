@@ -33,19 +33,19 @@
                         <td>{{ item.name }}</td>
                       </tr>
                       <tr>
-                        <th>Тип</th>
-                        <td>{{ item.type }}</td>
+                        <th>Подразделение</th>
+                        <td>{{ item.department.department }}</td>
                       </tr>
                       <tr>
-                        <th>Подразделение</th>
-                        <td>{{ item.department }}</td>
+                        <th>Тип</th>
+                        <td>{{ item.departmentType.type }}</td>
                       </tr>
                       <tr>
                         <th>Страницы</th>
                         <td>
                           <ul class="list-unstyled">
                             <li
-                              v-for="(item, index) in item.formSlugs"
+                              v-for="(item, index) in item.slugs"
                               :key="index"
                             >
                               {{ item.slug }}

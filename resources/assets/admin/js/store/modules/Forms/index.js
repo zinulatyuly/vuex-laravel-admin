@@ -1,7 +1,10 @@
 function initialState() {
   return {
     all: [],
-    relationships: {},
+    relationships: {
+      departmentType: 'type',
+      department: 'department'
+    },
     query: {},
     loading: false,
   };
@@ -17,7 +20,7 @@ const getters = {
 const actions = {
   fetchData({ commit, state }) {
     commit('setLoading', true);
-
+    
     axios
       .get('/api/internal/admin/forms')
       .then((response) => {

@@ -108,9 +108,7 @@ const mutations = {
   addDepartmentType(state) {
     state.item.departmentTypes.push({
       id: null,
-      code: null,
       type: null,
-      email: null,
     });
   },
   deleteDepartmentType(state, index) {

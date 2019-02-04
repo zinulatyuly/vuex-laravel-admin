@@ -10,9 +10,4 @@ class FormDepartmentType extends Model
         'department_id',
         'type'
     ];
-
-    public function type()
-    {
-        return $this->belongsTo('App\FormDepartment', 'department_id');
-    }
 }

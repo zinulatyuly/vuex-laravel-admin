@@ -18,8 +18,6 @@ class FormDepartmentType extends JsonResource
         return [
             'id'       => $this->id,
             'type'     => $this->type,
-            'email'     => $this->email,
-            'code'     => $this->code,
             ];
     }
 }

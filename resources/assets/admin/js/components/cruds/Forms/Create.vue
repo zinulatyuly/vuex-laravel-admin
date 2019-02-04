@@ -35,53 +35,44 @@
                 </div>
                 <div class="form-group">
                   <label for="department">
-                    <span
-                      v-if="!item.department"
-                      style="color: red"
-                    >*</span>
                     Подразделение
                   </label>
                   <select
-                    v-model="dep"
+                    id="department"
                     class="form-control"
+                    v-model="dep"
                   >
+                    <option></option>
                     <option
-                      v-for="(id, index) in departments"
+                      v-for="(department, index) in departments"
                       :key="index"
-                      :value="id.department"
-                    >{{ id.department }}
+                      :value="department"
+                    >{{ department.department }}
                     </option>
                   </select>
                 </div>
 
-                <div
-                  v-for="(id, index) in departments"
-                  :key="index"
-                >
-                  <div
-                    v-if="id.department === item.department"
-                    class="form-group"
-                  >
+                <div class="form-group">
                     <label>Тип</label>
                     <select
-                      v-model="type"
+                      @input="updateTypeId"
                       class="form-control"
                     >
+                      <option></option>
                       <option
-                        v-for="(type, index) in id.departmentTypes"
+                        v-for="(type, index) in selectedDepartment.departmentTypes"
                         :key="index"
-                        :value="type.type"
+                        :value="type.id"
                       >{{ type.type }}
                       </option>
                     </select>
-                  </div>
                 </div>
 
                 <div class="form-group">
                   <label>Страницы</label>
                   <relation-select
                     :is-select="false"
-                    :items="item.formSlugs"
+                    :items="item.slugs"
                     label="slug"
                     @addItem="addFormSlug"
                     @deleteItem="deleteFormSlug"
@@ -115,23 +106,16 @@ export default {
     return {};
   },
   computed: {
-    ...mapGetters('FormsSingle', ['item', 'loading', 'departments']),
+    ...mapGetters('FormsSingle', ['item', 'loading', 'departments', 'selectedDepartment']),
     dep: {
       get() {
-        return this.item.department;
+        return this.selectedDepartment;
       },
       set(value) {
         this.setDepartment(value);
-      },
-    },
-    type: {
-      get() {
-        return this.item.type;
-      },
-      set(value) {
-        this.setType(value);
-      },
-    },
+        this.setDepartmentId(value.id);
+      }
+    }
   },
   destroyed() {
     this.resetState();
@@ -145,8 +129,9 @@ export default {
       'resetState',
       'fetchDepartments',
       'setName',
-      'setType',
+      'setTypeId',
       'setDepartment',
+      'setDepartmentId',
       'addFormSlug',
       'deleteFormSlug',
       'updateFormSlug',
@@ -155,11 +140,9 @@ export default {
     updateName(e) {
       this.setName(e.target.value);
     },
-    updateDepartment(e) {
-      this.setDepartment(e.target.value);
-    },
-    updateType(e) {
-      this.setType(e.target.value);
+    updateTypeId(e) {
+      console.log('updatetype', e.target.value);
+      this.setTypeId(e.target.value);
     },
     updateFormSlug(index, slug) {
       this.setFormSlug({ index, slug });

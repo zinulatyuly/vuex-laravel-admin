@@ -19,11 +19,11 @@ class CreateFormsTable extends Migration
             $table->unsignedInteger('type_id');
             $table->unsignedInteger('department_id');
 
-            $table->foreign('type_id')
+            $table->foreign('department_id')
                 ->references('id')
                 ->on('form_departments')
                 ->onDelete('cascade');
-            $table->foreign('department_id')
+            $table->foreign('type_id')
                 ->references('id')
                 ->on('form_department_types');
             $table->timestamps();

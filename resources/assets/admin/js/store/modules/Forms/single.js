@@ -3,12 +3,18 @@ function initialState() {
     item: {
       id: null,
       name: null,
-      type: null,
-      department: null,
-      formSlugs: [],
+      typeId: null,
+      departmentId: null,
+      department: {},
+      departmentType: {},
+      slugs: [],
     },
 
-    departments: {},
+    selectedDepartment: {
+      id: null,
+      departmentTypes: []
+    },
+    departments: [],
 
     loading: false,
   };
@@ -16,6 +22,7 @@ function initialState() {
 
 const getters = {
   item: state => state.item,
+  selectedDepartment: state => state.selectedDepartment,
   departments: state => state.departments,
   loading: state => state.loading,
 };
@@ -82,8 +89,9 @@ const actions = {
     });
   },
   fetchData({ commit, dispatch }, id) {
-    axios.get(`/api/internal/admin/forms/${id}`).then((response) => {
-      commit('setItem', response.data.data);
+    axios.get(`/api/internal/admin/forms/${id}`).then(({data}) => {
+      commit('setItem', data.data);
+      commit('setDepartment', { ... data.data.department, ... { departmentTypes: [data.data.departmentType]}})
     });
   },
   fetchDepartments({ commit, state }) {
@@ -94,11 +102,14 @@ const actions = {
   setName({ commit }, value) {
     commit('setName', value);
   },
-  setType({ commit }, value) {
-    commit('setType', value);
-  },
   setDepartment({ commit }, value) {
     commit('setDepartment', value);
+  },
+  setTypeId({ commit }, value) {
+    commit('setTypeId', value);
+  },
+  setDepartmentId({ commit }, value) {
+    commit('setDepartmentId', value);
   },
   addFormSlug({ commit }) {
     commit('addFormSlug');
@@ -124,23 +135,26 @@ const mutations = {
   setName(state, value) {
     state.item.name = value;
   },
-  setType(state, value) {
-    state.item.type = value;
-  },
   setDepartment(state, value) {
-    state.item.department = value;
+    state.selectedDepartment = value;
+  },
+  setTypeId(state, value) {
+    state.item.typeId = value;
+  },
+  setDepartmentId(state, value) {
+    state.item.departmentId = value;
   },
   addFormSlug(state) {
-    state.item.formSlugs.push({
+    state.item.slugs.push({
       id: null,
       slug: null,
     });
   },
   deleteFormSlug(state, index) {
-    state.item.formSlugs.splice(index, 1);
+    state.item.slugs.splice(index, 1);
   },
   setFormSlug(state, { index, slug }) {
-    state.item.formSlugs[index].slug = slug;
+    state.item.slugs[index].slug = slug;
   },
   setLoading(state, loading) {
     state.loading = loading;

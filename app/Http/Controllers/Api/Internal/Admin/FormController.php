@@ -13,12 +13,12 @@ class FormController extends Controller
 
     public function index()
     {
-        return FormResource::collection(Form::with(['formSlugs'])->get());
+        return FormResource::collection(Form::with(['slugs'])->get());
     }
 
     public function show($id)
     {
-        $form = Form::with(['formSlugs'])->findOrFail($id);
+        $form = Form::with(['slugs'])->findOrFail($id);
 
         return new FormResource($form);
     }

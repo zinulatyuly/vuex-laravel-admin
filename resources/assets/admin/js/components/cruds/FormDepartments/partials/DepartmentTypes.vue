@@ -14,10 +14,8 @@
       >
         <thead>
           <tr>
-            <th width="5%">#</th>
-            <th width="15%">Код Bitrix 24</th>
-            <th width="35%">Тип</th>
-            <th width="40%">E-mail</th>
+            <th width="10%">#</th>
+            <th width="90%">Тип</th>
           </tr>
         </thead>
         <tbody>
@@ -28,29 +26,11 @@
             <td class="position-number">{{ index + 1 }}.</td>
             <td class="position-number">
               <input
-                :value="item.code"
-                required
-                type="number"
-                class="form-control"
-                @input="updateItem(index, 'code', $event.target.value)"
-              >
-            </td>
-            <td class="position-number">
-              <input
                 :value="item.type"
                 required
                 type="text"
                 class="form-control"
                 @input="updateItem(index, 'type', $event.target.value)"
-              >
-            </td>
-            <td class="position-number">
-              <input
-                :value="item.email"
-                required
-                type="email"
-                class="form-control"
-                @input="updateItem(index, 'email', $event.target.value)"
               >
             </td>
             <td>
