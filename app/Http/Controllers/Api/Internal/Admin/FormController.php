@@ -18,7 +18,7 @@ class FormController extends Controller
 
     public function show($id)
     {
-        $form = Form::with(['slugs'])->findOrFail($id);
+        $form = Form::with(['slugs', 'department.formDepartmentTypes'])->findOrFail($id);
 
         return new FormResource($form);
     }

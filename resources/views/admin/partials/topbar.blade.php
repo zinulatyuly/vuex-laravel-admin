@@ -8,7 +8,7 @@
         </span>
         <!-- logo for regular state and mobile devices -->
         <span class="logo-lg">
-           VueX-Laravel-Admin
+           Admin
         </span>
     </a>
     <nav class="navbar navbar-static-top">
@@ -19,13 +19,6 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </a>
-        {{-- <div class="navbar-custom-menu">
-            <ul class="nav navbar-nav">
-                <li>
-                    <a href="#" data-toggle="modal" data-target="#media-manager-modal"><i class="fa fa-image"></i> Медиа-менеджер</a>
-                </li>
-            </ul>
-        </div> --}}
     </nav>
 </header>
 

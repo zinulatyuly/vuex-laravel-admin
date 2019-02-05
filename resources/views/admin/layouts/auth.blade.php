@@ -6,7 +6,7 @@
 </head>
 
 <body class="page-header-fixed">
-
+<div id="app">
     <div style="margin-top: 10%;"></div>
 
     <div class="container-fluid">
@@ -17,6 +17,7 @@
          style="display: none;">
         <i class="fa fa-arrow-up"></i>
     </div>
+</div>
 
     @include('admin.partials.javascripts')
 

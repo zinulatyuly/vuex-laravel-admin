@@ -61,7 +61,10 @@
                   >
                     <option></option>
                     <option
-                            v-for="(type, index) in selectedDepartment.departmentTypes"
+                            v-for="(type, index) in
+                              selectedDepartment.departmentTypes.length
+                              ? selectedDepartment.departmentTypes
+                              : item.department.form_department_types"
                             :key="index"
                             :value="type.id"
                     >{{ type.type }}
@@ -110,9 +113,7 @@
       ...mapGetters('FormsSingle', ['item', 'loading', 'departments', 'selectedDepartment']),
       dep: {
         get() {
-          if (this.selectedDepartment.department) {
-            return this.selectedDepartment
-          } else return this.departments.find(department => department.id === this.item.departmentId)
+          return this.selectedDepartment
         },
         set(value) {
           this.setDepartment(value);
