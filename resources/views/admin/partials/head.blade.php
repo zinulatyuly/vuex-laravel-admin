@@ -10,9 +10,10 @@
 <meta name="dp-datetime" content="{{ config('app.datetime_format_moment') }}">
 <meta name="app-locale" content="{{ App::getLocale() }}">
 
+<link rel="shortcut icon" href="/uploads/favicon.ico" />
+
 <!-- Tell the browser to be responsive to screen width -->
 <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-
 <!-- Font Awesome -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
