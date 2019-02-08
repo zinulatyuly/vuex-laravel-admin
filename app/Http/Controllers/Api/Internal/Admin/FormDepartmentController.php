@@ -8,7 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\FormDepartment as FormDepartmentResource;
 use DB;
 
-class FormDepartmentsController extends Controller
+class FormDepartmentController extends Controller
 {
 
     public function index()

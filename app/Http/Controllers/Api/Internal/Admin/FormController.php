@@ -13,12 +13,12 @@ class FormController extends Controller
 
     public function index()
     {
-        return FormResource::collection(Form::with(['slugs'])->get());
+        return FormResource::collection(Form::with(['slugs', 'department', 'type'])->get());
     }
 
     public function show($id)
     {
-        $form = Form::with(['slugs', 'department.formDepartmentTypes'])->findOrFail($id);
+        $form = Form::with(['slugs', 'department', 'type'])->findOrFail($id);
 
         return new FormResource($form);
     }
@@ -30,7 +30,7 @@ class FormController extends Controller
         DB::transaction(function () use ($form, $request) {
             $form->save();
 
-            $form->syncFormSlugs($request->form_slugs);
+            $form->syncFormSlugs($request->slugs);
         });
 
         return (new FormResource($form))
@@ -45,7 +45,7 @@ class FormController extends Controller
         DB::transaction(function () use ($form, $request) {
             $form->update($request->all());
 
-            $form->syncFormSlugs($request->form_slugs);
+            $form->syncFormSlugs($request->slugs);
         });
 
         return (new FormResource($form))

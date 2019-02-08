@@ -40,31 +40,27 @@
                   <select
                           id="department"
                           class="form-control"
-                          v-model="dep"
+                          :value="item.departmentId"
+                          @input="updateDepartmentId"
                   >
-                    <option></option>
                     <option
                             v-for="(department, index) in departments"
                             :key="index"
-                            :value="department"
+                            :value="department.id"
                     >{{ department.department }}
                     </option>
                   </select>
                 </div>
 
                 <div class="form-group">
-                  <label>Тип</label>
+                  <label for="type">Тип</label>
                   <select
-                          :value="item.typeId"
-                          @input="updateTypeId"
+                          id="type"
                           class="form-control"
+                          v-model="selectedType"
                   >
-                    <option></option>
                     <option
-                            v-for="(type, index) in
-                              selectedDepartment.departmentTypes.length
-                              ? selectedDepartment.departmentTypes
-                              : item.department.form_department_types"
+                            v-for="(type, index) in types"
                             :key="index"
                             :value="type.id"
                     >{{ type.type }}
@@ -110,14 +106,17 @@
       return {};
     },
     computed: {
-      ...mapGetters('FormsSingle', ['item', 'loading', 'departments', 'selectedDepartment']),
-      dep: {
+      ...mapGetters('FormsSingle', ['item', 'loading', 'departments']),
+      types: function () {
+        let buff = this.departments.find(item => item.id === this.item.departmentId);
+        if (buff && buff.departmentTypes) return buff.departmentTypes; else return [];
+      },
+      selectedType: {
         get() {
-          return this.selectedDepartment
+          return this.item.typeId;
         },
         set(value) {
-          this.setDepartment(value);
-          this.setDepartmentId(value.id);
+          this.setTypeId(Number(value))
         }
       }
     },
@@ -125,7 +124,7 @@
       '$route.params.id': function () {
         this.resetState();
         this.fetchData(this.$route.params.id);
-      },
+      }
     },
     destroyed() {
       this.resetState();
@@ -142,7 +141,6 @@
         'fetchDepartments',
         'setName',
         'setTypeId',
-        'setDepartment',
         'setDepartmentId',
         'addFormSlug',
         'deleteFormSlug',
@@ -152,8 +150,8 @@
       updateName(e) {
         this.setName(e.target.value);
       },
-      updateTypeId(e) {
-        this.setTypeId(e.target.value);
+      updateDepartmentId(e) {
+        this.setDepartmentId(Number(e.target.value));
       },
       updateFormSlug(index, slug) {
         this.setFormSlug({ index, slug });

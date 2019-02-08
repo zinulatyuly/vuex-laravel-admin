@@ -85,7 +85,7 @@
             },
             {
               title: 'Тип',
-              field: 'departmentType',
+              field: 'type',
               tdComp: DatatableSingle,
               sortable: true,
             },

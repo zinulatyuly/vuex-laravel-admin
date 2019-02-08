@@ -5,6 +5,7 @@ namespace App\Http\Resources;
 use Illuminate\Http\Resources\Json\Resource;
 use App\Http\Resources\FormSlug as FormSlugResource;
 use App\Http\Resources\FormDepartment as DepartmentResource;
+use App\Http\Resources\FormDepartmentType as TypeResource;
 
 class Form extends Resource
 {
@@ -21,9 +22,9 @@ class Form extends Resource
             'name' => $this->name,
             'typeId' => $this->type_id,
             'departmentId' => $this->department_id,
-            'department' => $this->department,
-            'departmentType' => $this->departmentType,
             'slugs' => FormSlugResource::collection($this->whenLoaded('slugs')),
+            'department' => new DepartmentResource($this->whenLoaded('department')),
+            'type' => new TypeResource($this->whenLoaded('type')),
         ];
     }
 }

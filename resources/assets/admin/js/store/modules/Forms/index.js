@@ -2,7 +2,7 @@ function initialState() {
   return {
     all: [],
     relationships: {
-      departmentType: 'type',
+      type: 'type',
       department: 'department'
     },
     query: {},

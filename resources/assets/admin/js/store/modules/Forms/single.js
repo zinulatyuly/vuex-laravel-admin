@@ -5,16 +5,16 @@ function initialState() {
       name: null,
       typeId: null,
       departmentId: null,
-      department: {},
-      departmentType: {},
       slugs: [],
+  
+      department: {},
+      type: {}
     },
 
-    selectedDepartment: {
-      id: null,
-      departmentTypes: []
-    },
-    departments: [],
+    departments: [
+      { departmentTypes: [] }
+    ],
+    types: [],
 
     loading: false,
   };
@@ -22,7 +22,6 @@ function initialState() {
 
 const getters = {
   item: state => state.item,
-  selectedDepartment: state => state.selectedDepartment,
   departments: state => state.departments,
   loading: state => state.loading,
 };
@@ -96,14 +95,11 @@ const actions = {
   },
   fetchDepartments({ commit, state }) {
     axios.get('/api/internal/admin/form-departments').then((response) => {
-      commit('departmentsData', response.data.data);
+      commit('setDepartments', response.data.data);
     });
   },
   setName({ commit }, value) {
     commit('setName', value);
-  },
-  setDepartment({ commit }, value) {
-    commit('setDepartment', value);
   },
   setTypeId({ commit }, value) {
     commit('setTypeId', value);
@@ -129,14 +125,11 @@ const mutations = {
   setItem(state, item) {
     state.item = item;
   },
-  departmentsData(state, department) {
-    state.departments = department;
+  setDepartments(state, departments) {
+    state.departments = departments;
   },
   setName(state, value) {
     state.item.name = value;
-  },
-  setDepartment(state, value) {
-    state.selectedDepartment = value;
   },
   setTypeId(state, value) {
     state.item.typeId = value;

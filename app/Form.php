@@ -20,7 +20,7 @@ class Form extends Model
         return $this->hasMany('App\FormSlug', 'form_id');
     }
 
-    public function departmentType()
+    public function type()
     {
         return $this->belongsTo('App\FormDepartmentType', 'type_id');
     }
@@ -32,7 +32,7 @@ class Form extends Model
 
     public function syncFormSlugs(array $formSlugs)
     {
-        $oldFormSlugs = $this->formSlugs->toArray();
+        $oldFormSlugs = $this->slugs->toArray();
 
         $deletedFormSlugs = array_diff(array_pluck($oldFormSlugs, 'id'), array_pluck($formSlugs, 'id'));
 

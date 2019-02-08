@@ -7,7 +7,7 @@ Route::namespace('Api')->group(function () {
         Route::namespace('Admin')->prefix('admin')->group(function () {
             Route::get('dashboard', 'DashboardController@index');
             Route::apiResource('forms', 'FormController');
-            Route::apiResource('form-departments', 'FormDepartmentsController');
+            Route::apiResource('form-departments', 'FormDepartmentController');
             Route::apiResource('users', 'UserController');
             Route::apiResource('roles', 'RoleController');
             Route::apiResource('menus', 'MenuController');

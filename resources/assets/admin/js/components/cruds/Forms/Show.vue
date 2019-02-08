@@ -38,17 +38,17 @@
                       </tr>
                       <tr>
                         <th>Тип</th>
-                        <td>{{ item.departmentType.type }}</td>
+                        <td>{{ item.type.type }}</td>
                       </tr>
                       <tr>
                         <th>Страницы</th>
                         <td>
                           <ul class="list-unstyled">
                             <li
-                              v-for="(item, index) in item.slugs"
+                              v-for="(li, index) in item.slugs"
                               :key="index"
                             >
-                              {{ item.slug }}
+                              {{ li.slug }}
                             </li>
                           </ul>
                         </td>

@@ -40,13 +40,13 @@
                   <select
                     id="department"
                     class="form-control"
-                    v-model="dep"
+                    @input="updateDepartmentId"
                   >
                     <option></option>
                     <option
                       v-for="(department, index) in departments"
                       :key="index"
-                      :value="department"
+                      :value="department.id"
                     >{{ department.department }}
                     </option>
                   </select>
@@ -60,7 +60,7 @@
                     >
                       <option></option>
                       <option
-                        v-for="(type, index) in selectedDepartment.departmentTypes"
+                        v-for="(type, index) in types"
                         :key="index"
                         :value="type.id"
                       >{{ type.type }}
@@ -106,15 +106,10 @@ export default {
     return {};
   },
   computed: {
-    ...mapGetters('FormsSingle', ['item', 'loading', 'departments', 'selectedDepartment']),
-    dep: {
-      get() {
-        return this.selectedDepartment;
-      },
-      set(value) {
-        this.setDepartment(value);
-        this.setDepartmentId(value.id);
-      }
+    ...mapGetters('FormsSingle', ['item', 'loading', 'departments']),
+    types: function () {
+      let buff = this.departments.find(item => item.id === this.item.departmentId);
+      if (buff && buff.departmentTypes) return buff.departmentTypes; else return [];
     }
   },
   destroyed() {
@@ -130,7 +125,6 @@ export default {
       'fetchDepartments',
       'setName',
       'setTypeId',
-      'setDepartment',
       'setDepartmentId',
       'addFormSlug',
       'deleteFormSlug',
@@ -141,8 +135,10 @@ export default {
       this.setName(e.target.value);
     },
     updateTypeId(e) {
-      console.log('updatetype', e.target.value);
-      this.setTypeId(e.target.value);
+      this.setTypeId(Number(e.target.value));
+    },
+    updateDepartmentId(e) {
+      this.setDepartmentId(Number(e.target.value));
     },
     updateFormSlug(index, slug) {
       this.setFormSlug({ index, slug });
